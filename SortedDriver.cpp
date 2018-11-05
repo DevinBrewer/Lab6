@@ -83,8 +83,29 @@ mostIsolated(vector<double> & number)
 int
 unmatched(list<string> & A, list<string> & B)
 {
-	// STUB  STUB  STUB
-	return -1;
+	list<string>::iterator aIndex = A.begin();
+	list<string>::iterator bIndex = B.begin();
+	int difference = 0;
+
+	// Iterate over both lists to find the differences
+	for (int i = 0; i < A.size(); i++) {
+		string stringA = *aIndex;
+		string stringB = *bIndex;
+
+		// Compare the strings and move the iterators
+		if (stringA.compare(stringB) == 0) {	//A equal to B
+			++aIndex;
+			++bIndex;
+		} else if (stringA.compare(stringB) < 0) {	// A is smaller than B
+			++aIndex;
+			difference++;
+		} else if (stringA.compare(stringB) > 0) {	// A is greater than B
+			++bIndex;
+			difference++;
+		}
+	}
+
+	return difference;
 }
 
 
