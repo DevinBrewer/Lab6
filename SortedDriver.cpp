@@ -65,11 +65,25 @@ mostIsolated(vector<double> & number)
 	double difference = 0;
 
 	// Find the largest difference
-	for (int i = 1; i < number.size(); i++) {
-		int tempDiff = number.at(i) - number.at(i-1);
-		if (tempDiff > difference) {
-			isolated = number.at(i-1);
-			difference = tempDiff;
+	for (int i = 1; i < number.size()-1; i++) {
+
+		// Calculate the difference between the two neighbors
+		double tempDiff1 = fabs(number.at(i-1) - number.at(i));
+		double tempDiff2 = fabs(number.at(i) - number.at(i+1));
+
+		// Determine if the smaller difference is greater than the difference
+		if (tempDiff1 <= tempDiff2) {
+			if (tempDiff1 > difference) {
+				isolated = number.at(i);
+				difference = tempDiff1;
+			}
+		}
+
+		if (tempDiff2 <= tempDiff1) {
+			if (tempDiff2 > difference) {
+				isolated = number.at(i);
+				difference = tempDiff2;
+			}
 		}
 	}
 
