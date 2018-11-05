@@ -61,8 +61,19 @@ getWords(size_t numWords, size_t wordLength, string alphabet)
 double
 mostIsolated(vector<double> & number)
 {
-	// STUB  STUB  STUB
-	return -123.456;
+	double isolated = number.at(0);
+	double difference = 0;
+
+	// Find the largest difference
+	for (int i = 1; i < number.size(); i++) {
+		int tempDiff = number.at(i) - number.at(i-1);
+		if (tempDiff > difference) {
+			isolated = number.at(i-1);
+			difference = tempDiff;
+		}
+	}
+
+	return isolated;
 }
 
 
