@@ -1,3 +1,10 @@
+/*
+  Date: 11/5/18
+  Name: Devin Brewer
+  Desc: COSC_2030 Lab #6; Uses of Sorted Sequences
+        SortedDriver.cpp
+*/
+
 // SortedDriver.cpp
 
 // tom bailey   1445  25 mar 2014
@@ -114,35 +121,6 @@ unmatched(list<string> & A, list<string> & B)
 	}
 
 	return difference;
-
-	// list<string>::iterator aIndex = A.begin();
-	// list<string>::iterator bIndex = B.begin();
-	// int difference = 0;
-	//
-	// // Iterate over both lists to find the differences
-	// while (true) {
-	// 	string stringA = *aIndex;
-	// 	string stringB = *bIndex;
-	//
-	// 	// Compare the strings and move the iterators
-	// 	if (stringA.compare(stringB) == 0) {	//A equal to B
-	// 		++aIndex;
-	// 		++bIndex;
-	// 	} else if (stringA.compare(stringB) < 0) {	// A is smaller than B
-	// 		++aIndex;
-	// 		difference++;
-	// 	} else if (stringA.compare(stringB) > 0) {	// A is greater than B
-	// 		++bIndex;
-	// 		difference++;
-	// 	}
-	//
-	// 	cout << stringA << " compared to " << stringB << " : " << "diff = " << difference << endl;
-	//
-	// 	// End case
-	// 	if (aIndex == A.end() && bIndex == B.end()) {
-	// 		return difference;
-	// 	}
-	// }
 }
 
 
