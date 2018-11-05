@@ -12,6 +12,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
 
 using namespace std;
 
@@ -97,29 +98,51 @@ mostIsolated(vector<double> & number)
 int
 unmatched(list<string> & A, list<string> & B)
 {
-	list<string>::iterator aIndex = A.begin();
-	list<string>::iterator bIndex = B.begin();
+	unordered_set<string> uset;
 	int difference = 0;
 
-	// Iterate over both lists to find the differences
-	for (int i = 0; i < A.size(); i++) {
-		string stringA = *aIndex;
-		string stringB = *bIndex;
+	// Load the list of B into the set
+	for (list<string>::iterator bIndex = B.begin(); bIndex != B.end(); ++bIndex) {
+		uset.insert(*bIndex);
+	}
 
-		// Compare the strings and move the iterators
-		if (stringA.compare(stringB) == 0) {	//A equal to B
-			++aIndex;
-			++bIndex;
-		} else if (stringA.compare(stringB) < 0) {	// A is smaller than B
-			++aIndex;
-			difference++;
-		} else if (stringA.compare(stringB) > 0) {	// A is greater than B
-			++bIndex;
-			difference++;
+	// Check for values of A that dont appear in the set
+	for (list<string>::iterator aIndex = A.begin(); aIndex != A.end(); ++aIndex) {
+		if (uset.find(*aIndex) == uset.end()) {
+			difference++;	// key not found in set
 		}
 	}
 
 	return difference;
+
+	// list<string>::iterator aIndex = A.begin();
+	// list<string>::iterator bIndex = B.begin();
+	// int difference = 0;
+	//
+	// // Iterate over both lists to find the differences
+	// while (true) {
+	// 	string stringA = *aIndex;
+	// 	string stringB = *bIndex;
+	//
+	// 	// Compare the strings and move the iterators
+	// 	if (stringA.compare(stringB) == 0) {	//A equal to B
+	// 		++aIndex;
+	// 		++bIndex;
+	// 	} else if (stringA.compare(stringB) < 0) {	// A is smaller than B
+	// 		++aIndex;
+	// 		difference++;
+	// 	} else if (stringA.compare(stringB) > 0) {	// A is greater than B
+	// 		++bIndex;
+	// 		difference++;
+	// 	}
+	//
+	// 	cout << stringA << " compared to " << stringB << " : " << "diff = " << difference << endl;
+	//
+	// 	// End case
+	// 	if (aIndex == A.end() && bIndex == B.end()) {
+	// 		return difference;
+	// 	}
+	// }
 }
 
 
